@@ -1,3 +1,11 @@
+"""
+Проект является реализацией игры в жанре "Tower Defense", где игроку предстоит защищать базу от волн врагов,
+расставляя башни.
+Реализован базовый функционал: можно выиграть если пережить три волны, или проиграть если хотя бы один враг дойдёт.
+Также есть два типа башен, переключение между ними по клавишам 1 и 2.
+
+Это главный модуль, он содержит основной игровой цикл, обработку событий, обновление состояний игры и отрисовку элементов игры.
+"""
 import pygame
 import sys
 from settings import Settings
@@ -5,7 +13,30 @@ from level import Level
 from grid import Grid
 
 class TowerDefenseGame:
+    """
+    Главный класс игры, управляющий основным циклом игры, событиями, обновлениями состояний и отрисовкой.
+    """
     def __init__(self):
+        """
+        Конструктор класса. Инициализирует основные параметры игры, загружает ресурсы и создаёт объекты уровня и сетки.
+        Описание метода.
+        pygame.init(): инициализация библиотеки Pygame;
+        self.settings: создание объекта настроек игры;
+        self.screen: настройка экрана с заданной шириной и высотой;
+        pygame.display.set_caption: установка заголовка окна игры;
+        self.clock: создание объекта для управления временем;
+
+        self.background: загрузка фона и изменение его размера в соответствии с размером экрана;
+        self.level: инициализация уровня игры, передача текущего объекта;
+        self.grid: инициализация сетки, передача текущего объекта;
+
+        self.font: установка шрифта для отображения текста;
+        self.shoot_sound: загрузка звука выстрела;
+        self.selected_tower_type: установка типа выбранной башни по умолчанию;
+        self.is_game_over: флаг для проверки состояния игры (закончена или нет);
+
+        self.show_grid: переменная для отслеживания, нужно ли отображать сетку
+        """
         pygame.init()
         self.settings = Settings()
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
@@ -29,13 +60,21 @@ class TowerDefenseGame:
         self.show_grid = False
 
     def game_over(self):
+        """
+        Обрабатывает условия окончания игры
+        """
         self.is_game_over = True
 
     def is_position_inside(self, pos):
-        """Check if a given position is inside the game screen boundaries."""
+        """
+        Функция проверяет, находится ли позиция в пределах игрового поля.
+        """
         return 0 <= pos.x <= self.settings.screen_width and 0 <= pos.y <= self.settings.screen_height
 
     def _check_events(self):
+        """
+        Обрабатывает игровые события, такие как нажатие клавиш и клики мыши.
+        """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -60,16 +99,25 @@ class TowerDefenseGame:
                     print("No tower type selected.")
 
     def _update_game(self):
+        """
+        Обновляет состояние игры, вызывая обновления уровня и сетки.
+        """
         self.level.update()
         self.grid.update()
 
     def _draw_win_screen(self):
+        """
+        Отображает экран победы.
+        """
         win_text = "You Win!"
         win_render = self.font.render(win_text, True, (255, 215, 0))
         win_rect = win_render.get_rect(center=(self.settings.screen_width/2, self.settings.screen_height/2))
         self.screen.blit(win_render, win_rect)
 
     def _draw_game_over_screen(self):
+        """
+        Отображает экран проигрыша
+        """
         self.screen.fill((0, 0, 0))
 
         game_over_text = "Game Over!"
@@ -79,6 +127,9 @@ class TowerDefenseGame:
         self.screen.blit(game_over_render, game_over_rect)
 
     def _draw(self):
+        """
+        Управляет отрисовкой всех элементов игры
+        """
         if self.is_game_over:
             self._draw_game_over_screen()
         else:
@@ -106,6 +157,9 @@ class TowerDefenseGame:
         pygame.display.flip()
 
     def run_game(self):
+        """
+        Запускает основной игровой цикл
+        """
         while True:
             self._check_events()
             self._update_game()
