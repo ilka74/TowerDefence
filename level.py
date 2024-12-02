@@ -149,8 +149,10 @@ class Level1(LevelBase):
         ]
         self.waves = [
             [{'path': random.choice(self.enemy_paths), 'speed': 1, 'health': 100, 'image_path': 'assets/enemies/basic_enemy.png', 'reward': 10}] * 5,
-            [{'path': random.choice(self.enemy_paths), 'speed': 3, 'health': 50, 'image_path': 'assets/enemies/fast_enemy.png', 'reward': 15}] * 10,
+            [{'path': random.choice(self.enemy_paths), 'speed': 2, 'health': 50, 'image_path': 'assets/enemies/fast_enemy.png', 'reward': 15}] * 10,
             [{'path': random.choice(self.enemy_paths), 'speed': 1, 'health': 200, 'image_path': 'assets/enemies/strong_enemy.png', 'reward': 30}] * 4,
+            [{'path': random.choice(self.enemy_paths), 'speed': 1, 'health': 300, 'image_path': 'assets/enemies/strong_enemy.png', 'reward': 40}] * 3,
+            [{'path': random.choice(self.enemy_paths), 'speed': 0.5, 'health': 500, 'image_path': 'assets/enemies/boss_enemy.png', 'reward': 100}] * 1,
         ]
 
 
@@ -164,7 +166,8 @@ class Level2(LevelBase):
         self.waves = [
             [{'path': random.choice(self.enemy_paths), 'speed': 3, 'health': 50, 'image_path': 'assets/enemies/fast_enemy.png', 'reward': 15}] * 8,
             [{'path': random.choice(self.enemy_paths), 'speed': 1, 'health': 200, 'image_path': 'assets/enemies/strong_enemy.png', 'reward': 30}] * 6,
-            [{'path': random.choice(self.enemy_paths), 'speed': 0.5, 'health': 500, 'image_path': 'assets/enemies/boss_enemy.png', 'reward': 100}] * 2,
+            [{'path': random.choice(self.enemy_paths), 'speed': 1.5, 'health': 150, 'image_path': 'assets/enemies/strong_enemy.png', 'reward': 25}] * 5,
+            [{'path': random.choice(self.enemy_paths), 'speed': 0.8, 'health': 400, 'image_path': 'assets/enemies/boss_enemy.png', 'reward': 100}] * 2,
         ]
 
 
@@ -178,6 +181,7 @@ class Level3(LevelBase):
         self.waves = [
             [{'path': random.choice(self.enemy_paths), 'speed': 1.3, 'health': 100, 'image_path': 'assets/enemies/basic_enemy.png', 'reward': 10}] * 5,
             [{'path': random.choice(self.enemy_paths), 'speed': 3, 'health': 50, 'image_path': 'assets/enemies/fast_enemy.png', 'reward': 15}] * 6,
-            [{'path': random.choice(self.enemy_paths), 'speed': 1, 'health': 200, 'image_path': 'assets/enemies/strong_enemy.png', 'reward': 30}] * 4,
-            [{'path': random.choice(self.enemy_paths), 'speed': 0.5, 'health': 500, 'image_path': 'assets/enemies/boss_enemy.png', 'reward': 100}] * 2,
+            [{'path': random.choice(self.enemy_paths), 'speed': 1.5, 'health': 200, 'image_path': 'assets/enemies/strong_enemy.png', 'reward': 30}] * 4,
+            [{'path': random.choice(self.enemy_paths), 'speed': 0.5, 'health': 500, 'image_path': 'assets/enemies/boss_enemy.png', 'reward': 100}] * 1,
+            [{'path': random.choice(self.enemy_paths), 'speed': 2, 'health': 150, 'image_path': 'assets/enemies/fast_enemy.png', 'reward': 20}] * 5,
         ]

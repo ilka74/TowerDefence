@@ -72,7 +72,7 @@ class FastEnemy(Enemy):
     """
     def __init__(self, path, game):
         super().__init__(path=path, speed=3, health=10,
-                         image_path='assets/enemies/fast_enemy.png', game=game, reward=15)
+                         image_path='assets/enemies/fast_enemy.png', game=game, reward=50)
 
 
 class StrongEnemy(Enemy):
@@ -81,7 +81,7 @@ class StrongEnemy(Enemy):
     """
     def __init__(self, path, game):
         super().__init__(path=path, speed=1, health=100,
-                         image_path='assets/enemies/strong_enemy.png', game=game, reward=30)
+                         image_path='assets/enemies/strong_enemy.png', game=game, reward=100)
 
 
 class BossEnemy(Enemy):
@@ -90,5 +90,5 @@ class BossEnemy(Enemy):
     """
     def __init__(self, path, game):
         super().__init__(path=path, speed=0.5, health=300,
-                         image_path='assets/enemies/boss_enemy.png', game=game, reward=100)
+                         image_path='assets/enemies/boss_enemy.png', game=game, reward=200)
 
